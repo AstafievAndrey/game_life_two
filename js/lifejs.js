@@ -232,7 +232,7 @@ var LifeGame = {
   reset: function(ask)
   {
     this.stop();
-    if(ask && !confirm('7'))
+    if(ask && !confirm('Вы уверены?'))
       return;
     this.panningStart = null;
     this.curGen = {};
@@ -346,48 +346,6 @@ var LifeGame = {
     var cy = Math.floor((y - frame.clientHeight / 2) / this.checkSize + 0.5) + this.offsetY;
     return { x: cx, y: cy };
   },
-
-  /*
-    Generation recording functions
-  */
-/*	
-  recordStep: function(curCode)
-  {
-    if(this.recordSteps.length)
-      this.recordSteps += ' ';
-    this.recordSteps += this.stepNo + curCode;
-    this.updateControls();
-  },
-
-  getRecordedImage: function()
-  {
-    var ajax = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
-    ajax.open('post', 'imgrec.php', true);
-    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    ajax.onreadystatechange = function() {
-      if(ajax.readyState == 4)
-      {
-        if(ajax.status == 200)
-        {
-          var imgName = ajax.responseText;
-          if(imgName.substring(0, 4) == 'ERR:')
-            alert('РћС€РёР±РєР° СЃРµСЂРІРµСЂР°: ' + imgName.substring(4));
-          else
-            open('records/' + imgName + '.gif', '_blank')
-        }
-        else
-        {
-          LifeGame.recordOn = false;
-          LifeGame.updateControls();
-          alert('РћС€РёР±РєР° РїРµСЂРµРґР°С‡Рё РґР°РЅРЅС‹С… РЅР° СЃРµСЂРІРµСЂ - Р·Р°РїРёСЃСЊ РѕСЃС‚Р°РЅРѕРІР»РµРЅР°');
-        }
-      }
-    };
-    // Create and send list of checks
-    var data = 'd=' + this.recordSteps.replace(/\+/g, '%2B');
-    ajax.send(data);
-  },
-*/
   stepCode: function()
   {
     var code = '';
